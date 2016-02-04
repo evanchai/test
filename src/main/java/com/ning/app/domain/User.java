@@ -1,0 +1,70 @@
+package com.ning.app.domain;
+
+import javax.persistence.*;
+import java.util.Date;
+
+/**
+ * Created by evanchai on 2/4/16.
+ */
+@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
+    @Column(nullable = false,unique = true)
+    private String username;
+    @Column(nullable = false)
+    private String password;
+    private Date insertTiem;
+
+    protected User() {}
+
+    public User(String username,String password){
+        this.username = username;
+        this.password = password;
+        this.insertTiem = new Date();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getInsertTiem() {
+        return insertTiem;
+    }
+
+    public void setInsertTiem(Date insertTiem) {
+        this.insertTiem = insertTiem;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", insertTiem=" + insertTiem +
+                '}';
+    }
+}
